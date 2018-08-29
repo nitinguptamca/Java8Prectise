@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.EnumSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.function.BiConsumer;
@@ -22,24 +23,33 @@ public class StreamApi {
 
 	public static void main(String[] args) {
 		List<Integer> values = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
+		for (Integer i : values) {
+			System.out.println(i);
+		}
 		// Internal loop
-		/*
-		 * for (int s = 0; s < values.size(); s++) { System.out.println(s); }
-		 */
-		/*
-		 * for (Iterator iterator = values.iterator(); iterator.hasNext();) { Integer
-		 * integer = (Integer) iterator.next(); System.out.println(integer);
-		 * 
-		 * }
-		 */
-		/*
-		 * for (Integer integer : values) { System.out.println(integer); }
-		 */
+
+		for (int s = 0; s < values.size(); s++) {
+			System.out.println(s);
+		}
+
+		for (Iterator iterator = values.iterator(); iterator.hasNext();) {
+			Integer integer = (Integer) iterator.next();
+			System.out.println(integer);
+
+		}
 		// Exterm looping
 
-		// values.forEach(i ->System.out.println(i));
+		 values.forEach(i ->System.out.println(i));
 		// Method Reference
-		// values.forEach(System.out::println);
+		 values.forEach(System.out::println);
+		 
+		 Supplier<Integer> supplier=new Supplier<Integer>() {
+
+			@Override
+			public Integer get() {
+			return values.size();
+			}
+		};
 
 		Consumer<Integer> consumer = new Consumer<Integer>() {
 
@@ -54,10 +64,11 @@ public class StreamApi {
 		// values.forEach(StreamApi::addvalue3times);
 		// 1*3+2*3+3*3+1*3+4*3+5*3+6*3+7=84
 		// 3+6+9+12+15+18+21=
+		Stream<Integer> integerStream=values.stream().map(i -> i * 3);
 		System.out.println(values.stream().map(i -> i * 3).reduce(0, (c, e) -> c + e));
 		Stream<Integer> stream1 = values.stream();
+		
 		Function<Integer, Integer> function = new Function<Integer, Integer>() {
-
 			@Override
 			public Integer apply(Integer t) {
 				return t * 3;

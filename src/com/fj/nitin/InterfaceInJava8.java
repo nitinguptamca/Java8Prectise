@@ -12,44 +12,88 @@ package com.fj.nitin;
 
 interface A {
 	void hello(String s);
-	static void helloStatic(String s) {		System.out.println("I am static method in Interface A :" + s);	}
-	default void helloDefault(String s) {		System.out.println("I am default method in Interface A :" + s);	}
-	default void helloDefault1(String s) {		System.out.println("I am default method in Interface A :" + s);	}
-	static void helloStatic1(String s) {		System.out.println("I am default method in Interface A :" + s);	}
+
+	static void helloStatic(String s) {
+		System.out.println("I am static method in Interface A :" + s);
+	}
+
+	default void helloDefault(String s) {
+		System.out.println("I am default method in Interface A :" + s);
+	}
+
+	default void helloDefault1(String s) {
+		System.out.println("I am default1 method in Interface A :" + s);
+	}
+
+	static void helloStatic1(String s) {
+		System.out.println("I am static1 method in Interface A :" + s);
+	}
 }
 
 interface B extends A {
 	void hello(String s);
-	static void helloStatic(String s) {		System.out.println("I am static method in Interface B :" + s);	}
-	default void helloDefault(String s) {		System.out.println("I am default method in Interface B :" + s);	}
+
+	static void helloStatic(String s) {
+		System.out.println("I am static method in Interface B :" + s);
+	}
+
+	default void helloDefault(String s) {
+		System.out.println("I am default method in Interface B :" + s);
+	}
 }
 
 public class InterfaceInJava8 implements B {
 
 	interface X {
 		void hello(String s);
-		static void helloStatic(String s) {			System.out.println("I am static method in Interface X :" + s);		}
-		default void helloDefault(String s) {			System.out.println("I am default method in Interface X :" + s);		}
-		default void helloDefault11(String s) {			System.out.println("I am default method in Interface X :" + s);		}
+
+		static void helloStatic(String s) {
+			System.out.println("I am static method in Interface X :" + s);
+		}
+
+		default void helloDefault(String s) {
+			System.out.println("I am default method in Interface X :" + s);
+		}
+
+		default void helloDefault11(String s) {
+			System.out.println("I am default method in Interface X :" + s);
+		}
 	}
 
 	interface C extends X {
 		void hello(String s);
-		static void helloStatic(String s) {			System.out.println("I am static method in Interface C :" + s);		}
-		default void helloDefault(String s) {			System.out.println("I am default method in Interface C :" + s);		}
-		default void helloDefault11(String s) {			System.out.println("I am default method in Interface C :" + s);		}
+
+		static void helloStatic(String s) {
+			System.out.println("I am static method in Interface C :" + s);
+		}
+
+		default void helloDefault(String s) {
+			System.out.println("I am default method in Interface C :" + s);
+		}
+
+		default void helloDefault11(String s) {
+			System.out.println("I am default method in Interface C :" + s);
+		}
 	}
 
 	static interface D extends C {
 		void hello(String s);
-		static void helloStatic(String s) {			System.out.println("I am static method in Interface D :" + s);		}
-		default void helloDefault(String s) {System.out.println("I am default method in Interface D :" + s);}
+
+		static void helloStatic(String s) {
+			System.out.println("I am static method in Interface D :" + s);
+		}
+
+		default void helloDefault(String s) {
+			System.out.println("I am default method in Interface D :" + s);
+		}
 	}
 
 	static class E implements D {
 
 		@Override
-		public void hello(String s) { System.out.println("hello inner class");	}
+		public void hello(String s) {
+			System.out.println("hello inner class"+s);
+		}
 
 		public void helloTest() {
 			hello("inside E class");
@@ -75,7 +119,7 @@ public class InterfaceInJava8 implements B {
 	}
 
 	private void testHello() {
-		A.helloStatic("Hello static A"); 
+		A.helloStatic("Hello static A");
 		D.helloStatic("Hello static D");
 		hello("InterfaceInJava8 class");
 		helloDefault("defautlt B");

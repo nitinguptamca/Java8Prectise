@@ -17,14 +17,11 @@ public class LambdaTest {
 		double width = 4d;
 		double area = getAreaOfRectangle(length, width);
 		System.out.println(area);
-		
-		Area rectAreaAny=(double w, double l)-> {
-				
-				return w*l;
-			};
-		
-		
-		
+
+		Area rectAreaAny = (double w, double l) -> {
+
+			return w * l;
+		};
 		Area rectArea2 = (double w, double l) -> {
 			System.out.println("value of width" + w);
 			System.out.println("value of length" + l);
