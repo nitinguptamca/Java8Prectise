@@ -1,8 +1,9 @@
 package com.fj.nitin;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 @FunctionalInterface
 interface Area {
@@ -32,6 +33,9 @@ public class LambdaTest {
 		// Not a compile time java 8 is smart he know the type
 		Area rectArea1 = (w, l) -> w * l;
 		System.out.println(rectArea.getAreaOfRectangle(10, 40));
+		
+		Function<Integer ,Integer> sum =( x) -> x=1;
+		BiFunction<Integer ,Integer,Integer> sumProduct=(Integer x,Integer y) -> x+y;
 
 		//// Zero Parameters
 		Runnable r = () -> System.out.println("Hello, world!");
